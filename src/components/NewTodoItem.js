@@ -5,10 +5,12 @@ export default class NewTodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: '',
       description: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
+    this.handleTitleTextChange = this.handleTitleTextChange.bind(this);
   }
 
   handleDescriptionTextChange(e) {
@@ -17,21 +19,33 @@ export default class NewTodoItem extends Component {
     });
   }
 
+  handleTitleTextChange(e) {
+    this.setState({
+      title: e.target.value
+    });
+  }
+
   _resetFields() {
     this.setState({
-      description: ''
+      description: '',
+      title: ''
     });
   };
 
   render() {
     const description = this.state.description;
+    const title = this.state.title;
     return (  
       <form onSubmit={this.handleSubmit}>
+        <input placeholder="Title" 
+          value={title} 
+          onChange={this.handleTitleTextChange}
+        />
         <input placeholder="Description" 
           value={description} 
           onChange={this.handleDescriptionTextChange}
         />
-        <button type="submit"> Add New Item</button>
+        <button type="submit">Add</button>
       </form>
     );
   }
@@ -39,7 +53,7 @@ export default class NewTodoItem extends Component {
   handleSubmit(e) {
     const item = {
       id: uuid.v4(),
-      description: this.state.description
+      ...this.state
     };
     this.props.onAddItem(item);
     this._resetFields();
