@@ -20,12 +20,8 @@ export default class TodoList extends Component {
     }
     
     removeItemHandle(id) {
-      const index = this.state.items.findIndex((item) => item.id === id);
       this.setState({
-        items: [
-          ...this.state.items.slice(0, index),
-          ...this.state.items.slice(index + 1)
-        ]
+        items: this.state.items.filter((item) => item.id !== id)
       });
     }
 
