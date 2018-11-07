@@ -59,6 +59,7 @@ export default class NewTodoItem extends Component {
     };
     this.props.onAddItem(item);
     this._resetFields();
+    this._isFormValid(false);
     e.preventDefault();
   }
 
