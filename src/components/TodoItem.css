@@ -12,3 +12,12 @@
 .TodoItem:hover {
   box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
 }
+
+.TodoClose {
+  float: right;
+  margin-right: 5px;
+}
+
+.TodoClose:hover {
+  cursor: pointer;
+}

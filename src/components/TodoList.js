@@ -10,6 +10,7 @@ export default class TodoList extends Component {
           items: []
         }
         this.addItemHandle = this.addItemHandle.bind(this);
+        this.removeItemHandle = this.removeItemHandle.bind(this);
     }
 
     addItemHandle(item) {
@@ -18,9 +19,19 @@ export default class TodoList extends Component {
       });
     }
     
+    removeItemHandle(id) {
+      const index = this.state.items.findIndex((item) => item.id === id);
+      this.setState({
+        items: [
+          ...this.state.items.slice(0, index),
+          ...this.state.items.slice(index + 1)
+        ]
+      });
+    }
+
     render() {
       const todoItems = this.state.items.map((todoItem) => 
-        <TodoItem key={todoItem.id} todoItem={todoItem}></TodoItem>
+        <TodoItem onRemoveItem={this.removeItemHandle} key={todoItem.id} todoItem={todoItem}></TodoItem>
       );
       return (
           <div>
