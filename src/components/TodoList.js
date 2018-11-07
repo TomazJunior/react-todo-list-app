@@ -33,7 +33,9 @@ export default class TodoList extends Component {
                 <hr></hr>
                 <div>
                   <h3>Items</h3>
-                  {todoItems}
+                  <ul className="TodoList-container">
+                    {todoItems}
+                  </ul>
                 </div>
               </div>
               
