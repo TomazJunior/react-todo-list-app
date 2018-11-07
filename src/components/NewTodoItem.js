@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import uuid from "uuid";
-
 export default class NewTodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      formValid: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
@@ -17,12 +17,14 @@ export default class NewTodoItem extends Component {
     this.setState({
       description: e.target.value
     });
+    this._validateData();
   }
 
   handleTitleTextChange(e) {
     this.setState({
       title: e.target.value
     });
+    this._validateData();
   }
 
   _resetFields() {
@@ -45,7 +47,7 @@ export default class NewTodoItem extends Component {
           value={description} 
           onChange={this.handleDescriptionTextChange}
         />
-        <button type="submit">Add</button>
+        <button disabled={!this.state.formValid} type="submit">Add</button>
       </form>
     );
   }
@@ -58,5 +60,18 @@ export default class NewTodoItem extends Component {
     this.props.onAddItem(item);
     this._resetFields();
     e.preventDefault();
+  }
+
+  _isFormValid(formValid) {
+    this.setState({
+      formValid
+    });
+  }
+  _validateData() {
+    if (!this.state.title || !this.state.description) { 
+      this._isFormValid(false);
+    } else {
+      this._isFormValid(true);
+    }
   }
 }
