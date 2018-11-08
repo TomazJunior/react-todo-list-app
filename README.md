@@ -3,8 +3,8 @@ A simple TODO list task manager using React.
 ### Live Demo
 Hosted on the github pages
 
+<a href="http://TomazJunior.github.io/react-todo-list-app/" target="_blank">Live demo</a>
 
-http://TomazJunior.github.io/react-todo-list-app
 
 ### Chalenge
 Try to use the minimum of third party libraries
