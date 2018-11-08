@@ -22,9 +22,9 @@ You will also see any lint errors in the console.
 #### Done:
 - create, delete item
 - drag and drop feature
+- publish it in a github page
 #### To-do:
 - edit item
 - complete task feature
 - change task color based on the task status
-- improve layot
-- publish it in a github page
+- improve layout
