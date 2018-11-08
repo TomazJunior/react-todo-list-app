@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.footer {
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background: #32456a;
+  text-align: center;
+}
+
+.footer a:link, a:visited { 
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:link:active, a:visited:active { 
+    color: white;
+}
