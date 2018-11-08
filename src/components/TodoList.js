@@ -36,7 +36,6 @@ export default class TodoList extends Component {
         </div>
         <div className="TodoList-body">
           <NewTodoItem onAddItem={this.addItemHandle}></NewTodoItem>
-          <hr></hr>
           <div>
             <h3>Items</h3>
             <ul className="TodoList-container">
