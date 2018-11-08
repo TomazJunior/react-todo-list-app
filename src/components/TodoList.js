@@ -11,6 +11,7 @@ export default class TodoList extends Component {
     }
     this.addItemHandle = this.addItemHandle.bind(this);
     this.removeItemHandle = this.removeItemHandle.bind(this);
+    this.dropItemHandle = this.dropItemHandle.bind(this);
   }
 
   addItemHandle(item) {
@@ -25,9 +26,18 @@ export default class TodoList extends Component {
     });
   }
 
+  dropItemHandle(droppedItemId, droppedOnItemId) {
+    const toPosition = this.state.items.findIndex((item) => item.id === droppedOnItemId);
+    const fromPosition = this.state.items.findIndex((item) => item.id === droppedItemId);
+    this.state.items.splice(toPosition, 0, this.state.items.splice(fromPosition, 1)[0]);
+    this.setState({
+      items: [].concat(this.state.items)
+    })
+  }
+
   render() {
     const todoItems = this.state.items.map((todoItem) => 
-      <TodoItem onRemoveItem={this.removeItemHandle} key={todoItem.id} todoItem={todoItem}></TodoItem>
+      <TodoItem onDropItem={this.dropItemHandle} onRemoveItem={this.removeItemHandle} key={todoItem.id} todoItem={todoItem}></TodoItem>
     );
     return (
       <div>

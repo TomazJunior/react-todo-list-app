@@ -44,7 +44,7 @@ export default class NewTodoItem extends Component {
         <fieldset>
           <legend>Add New Item</legend>
           <p>
-            <label className="field" for="Title"><span>*</span>Title:</label>
+            <label className="field" htmlFor="Title"><span>*</span>Title:</label>
             <input
               name="Title"
               value={title} 
@@ -52,7 +52,7 @@ export default class NewTodoItem extends Component {
             />
           </p>
           <p>
-            <label className="field" for="Description"><span>*</span>Description:</label>
+            <label className="field" htmlFor="Description"><span>*</span>Description:</label>
             <input
               name="Description"
               value={description} 

@@ -7,10 +7,23 @@
     margin-right: 10px;
     color: white;
     text-align: center;
+    cursor: move;
+    border: 2px solid #666666;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px #000;
+    -ms-box-shadow: inset 0 0 3px #000;
+    box-shadow: inset 0 0 3px #000;
 }
 
-.TodoItem:hover {
-  box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+.over {
+  border: 2px #000;
+}
+
+.TodoItem.dragStart {
+  opacity: 0.4;
 }
 
 .TodoClose {
