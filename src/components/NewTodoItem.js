@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import uuid from "uuid";
+import "./NewTodoItem.css";
+
 export default class NewTodoItem extends Component {
   constructor(props) {
     super(props);
@@ -39,15 +41,26 @@ export default class NewTodoItem extends Component {
     const title = this.state.title;
     return (  
       <form onSubmit={this.handleSubmit}>
-        <input placeholder="Title" 
-          value={title} 
-          onChange={this.handleTitleTextChange}
-        />
-        <input placeholder="Description" 
-          value={description} 
-          onChange={this.handleDescriptionTextChange}
-        />
-        <button disabled={!this.state.formValid} type="submit">Add</button>
+        <fieldset>
+          <legend>Add New Item</legend>
+          <p>
+            <label className="field" for="Title"><span>*</span>Title:</label>
+            <input
+              name="Title"
+              value={title} 
+              onChange={this.handleTitleTextChange}
+            />
+          </p>
+          <p>
+            <label className="field" for="Description"><span>*</span>Description:</label>
+            <input
+              name="Description"
+              value={description} 
+              onChange={this.handleDescriptionTextChange}
+            />
+          </p>
+          <button disabled={!this.state.formValid} type="submit">Add</button>
+        </fieldset>
       </form>
     );
   }
