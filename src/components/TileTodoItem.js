@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ModalDialog from './ModalDialog';
-import './TodoItem.css';
+import './TileTodoItem.css';
 import EditTodoItem from "./EditTodoItem";
 
-export default class TodoItem extends Component {
+export default class TileTodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,11 +113,14 @@ export default class TodoItem extends Component {
           onDrop={(e) => this.handleDrop(e, todoItem, onDropItem)}
           onDragEnd={this.handleDragEnd}
           >
-
+            <kbd className='status'>{todoItem.status}</kbd>
             <span onClick={() => onRemoveItem(todoItem.id)} className="TodoClose">x</span>
             <span onClick={() => this.handleEditItem()}>...</span>
-            <h4><b>{todoItem.title}</b></h4>
-            <p>{todoItem.description}</p> 
+            <div className='body'>
+              <h4><b>{todoItem.title}</b></h4>
+              <p>{todoItem.description}</p> 
+            </div>
+            
         </li>
       </React.Fragment>
       

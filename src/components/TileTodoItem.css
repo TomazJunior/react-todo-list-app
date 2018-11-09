@@ -34,3 +34,16 @@
 span:hover {
   cursor: pointer;
 }
+
+.TodoItem .status {
+  float: left;
+  padding: 5px;
+  background: #3677a1;
+  border-radius: 25px;
+  border: #013a5f 1px solid;
+  font-weight: bolder;
+}
+
+.TodoItem .body {
+  clear: both;
+}

@@ -1,13 +1,30 @@
 import React, { Component } from "react";
 import EditTodoItem from "./EditTodoItem";
-import TodoItem from "./TodoItem";
+import TileTodoItem from "./TileTodoItem";
 import './TodoList.css';
 
 export default class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      items: [{
+        id: 1,
+        title: 'title 1',
+        description: 'description 1',
+        status: 'open'
+      },
+      {
+        id: 2,
+        title: 'title 2',
+        description: 'description 2',
+        status: 'close'
+      },
+      {
+        id: 3,
+        title: 'title 3',
+        description: 'description 3',
+        status: 'open'
+      }]
     }
     this.addItemHandle = this.addItemHandle.bind(this);
     this.removeItemHandle = this.removeItemHandle.bind(this);
@@ -46,14 +63,14 @@ export default class TodoList extends Component {
 
   render() {
     const todoItems = this.state.items.map((todoItem) => 
-      <TodoItem 
+      <TileTodoItem 
         onDropItem={this.dropItemHandle} 
         onRemoveItem={this.removeItemHandle} 
         key={todoItem.id} 
         todoItem={todoItem}
         onEditItem={this.editItemHandle}
         >
-      </TodoItem>
+      </TileTodoItem>
     );
     return (
       <div>

@@ -23,7 +23,7 @@ You will also see any lint errors in the console.
 - create, edit, delete item
 - drag and drop feature
 - publish it in a github page
+- change status feature
 #### To-do:
-- complete task feature
 - change task color based on the task status
 - improve layout

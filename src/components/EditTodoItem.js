@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import uuid from "uuid";
 import "./EditTodoItem.css";
+import StatusTodoItem from './StatusTodoItem';
 
 export default class EditTodoItem extends Component {
   constructor(props) {
@@ -14,12 +15,14 @@ export default class EditTodoItem extends Component {
       this.state = {
         title: '',
         description: '',
+        status: 'open'
       };
     }
     
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
     this.handleTitleTextChange = this.handleTitleTextChange.bind(this);
+    this.handleStatusChange = this.handleStatusChange.bind(this);
   }
 
   handleDescriptionTextChange(e) {
@@ -32,6 +35,13 @@ export default class EditTodoItem extends Component {
   handleTitleTextChange(e) {
     this.setState({
       title: e.target.value
+    });
+    this._validateData();
+  }
+
+  handleStatusChange(e) {
+    this.setState({
+      status: e.target.value
     });
     this._validateData();
   }
@@ -67,6 +77,10 @@ export default class EditTodoItem extends Component {
               onChange={this.handleDescriptionTextChange}
             />
           </p>
+          <p>
+            <label className="field" htmlFor='Status'><span>*</span>Status:</label>
+            <StatusTodoItem onChange={this.handleStatusChange}></StatusTodoItem>
+          </p>
           <button disabled={!this.state.formValid} type="submit">Save</button>
         </fieldset>
       </form>
@@ -74,7 +88,6 @@ export default class EditTodoItem extends Component {
   }
 
   handleSubmit(e) {
-    debugger;
     const item = {
       id: uuid.v4(),
       ...this.state
@@ -92,7 +105,7 @@ export default class EditTodoItem extends Component {
   }
 
   _validateData() {
-    if (!this.state.title || !this.state.description) { 
+    if (!this.state.title || !this.state.description || !this.state.status) { 
       this._isFormValid(false);
     } else {
       this._isFormValid(true);
