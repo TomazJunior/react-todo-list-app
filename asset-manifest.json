@@ -1,15 +1,15 @@
 {
-  "main.css": "/react-todo-list-app/static/css/main.896fdf55.chunk.css",
-  "main.js": "/react-todo-list-app/static/js/main.c533b69f.chunk.js",
-  "main.js.map": "/react-todo-list-app/static/js/main.c533b69f.chunk.js.map",
+  "main.css": "/react-todo-list-app/static/css/main.edddaa0a.chunk.css",
+  "main.js": "/react-todo-list-app/static/js/main.582ee845.chunk.js",
+  "main.js.map": "/react-todo-list-app/static/js/main.582ee845.chunk.js.map",
   "static/css/1.919d36e5.chunk.css": "/react-todo-list-app/static/css/1.919d36e5.chunk.css",
   "static/js/1.61287553.chunk.js": "/react-todo-list-app/static/js/1.61287553.chunk.js",
   "static/js/1.61287553.chunk.js.map": "/react-todo-list-app/static/js/1.61287553.chunk.js.map",
   "runtime~main.js": "/react-todo-list-app/static/js/runtime~main.8f6f5368.js",
   "runtime~main.js.map": "/react-todo-list-app/static/js/runtime~main.8f6f5368.js.map",
   "static/css/1.919d36e5.chunk.css.map": "/react-todo-list-app/static/css/1.919d36e5.chunk.css.map",
-  "static/css/main.896fdf55.chunk.css.map": "/react-todo-list-app/static/css/main.896fdf55.chunk.css.map",
+  "static/css/main.edddaa0a.chunk.css.map": "/react-todo-list-app/static/css/main.edddaa0a.chunk.css.map",
   "index.html": "/react-todo-list-app/index.html",
-  "precache-manifest.6ebf4d2ef926a0987a81ac1578f81f1a.js": "/react-todo-list-app/precache-manifest.6ebf4d2ef926a0987a81ac1578f81f1a.js",
+  "precache-manifest.992f2827604434c73462f0fede65c876.js": "/react-todo-list-app/precache-manifest.992f2827604434c73462f0fede65c876.js",
   "service-worker.js": "/react-todo-list-app/service-worker.js"
 }
