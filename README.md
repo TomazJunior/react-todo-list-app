@@ -20,11 +20,10 @@ You will also see any lint errors in the console.
 ### Features:
 
 #### Done:
-- create, delete item
+- create, edit, delete item
 - drag and drop feature
 - publish it in a github page
 #### To-do:
-- edit item
 - complete task feature
 - change task color based on the task status
 - improve layout

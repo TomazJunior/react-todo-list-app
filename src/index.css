@@ -13,6 +13,35 @@ code {
     monospace;
 }
 
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  float: right;
+  font-size: large;
+  cursor: pointer;
+}
+
+button.success {
+  background-color: #4CAF50;
+}
+
+button.primary {
+  background-color: blue;
+}
+
+button.fail {
+  background-color: red;
+}
+
+button:disabled{
+  background-color: rgb(172, 172, 172);
+  cursor: no-drop;
+}
+
 .footer {
   padding: 20px;
   position: fixed;

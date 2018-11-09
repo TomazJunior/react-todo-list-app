@@ -1,0 +1,23 @@
+
+label span {
+  color: red
+}
+
+.form {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+fieldset p {
+  padding: 5px;
+}
+
+label{
+  margin: 0 0 5px 0;
+  width: 100%;
+}
+
+input {
+  width: 100%; 
+  padding: 4px;
+}

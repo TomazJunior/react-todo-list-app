@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import ModalDialog from './ModalDialog';
 import './TodoItem.css';
+import EditTodoItem from "./EditTodoItem";
 
 export default class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dragStart: false
+      dragStart: false,
+      showModal: false
     }
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
@@ -13,6 +16,8 @@ export default class TodoItem extends Component {
     this.handleDragLeave = this.handleDragLeave.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.handleEditItem = this.handleEditItem.bind(this);
+    this.handleSubmitEditItem = this.handleSubmitEditItem.bind(this);
   }
 
   handleDragStart(e, todoItem) {
@@ -61,30 +66,61 @@ export default class TodoItem extends Component {
     });
   }
 
+  handleEditItem() {
+    this.setState({
+      showModal: true
+    });
+  }
+
+  handleCloseEditItem() {
+    this.setState({
+      showModal: false
+    });
+  }
+
+  handleSubmitEditItem(item, callback) {
+    callback(item);
+    this.handleCloseEditItem();
+  }
+
   render() {
     const todoItem = this.props.todoItem;
     const onRemoveItem = this.props.onRemoveItem;
     const onDropItem = this.props.onDropItem;
+    const onEditItem = this.props.onEditItem;
     const todoItemClasses = ['TodoItem'];
-    
+    const showModal = this.state.showModal;
+
     this.state.dragStart && todoItemClasses.push('dragStart');
     this.state.over && todoItemClasses.push('over');
 
     return (
-      <li 
-      draggable className={todoItemClasses.join(' ')}
-      onDragStart={(e) => this.handleDragStart(e, todoItem)}
-      onDragOver={this.handleDragOver}
-      onDragEnter={this.handleDragEnter}
-      onDragLeave={this.handleDragLeave}
-      onDrop={(e) => this.handleDrop(e, todoItem, onDropItem)}
-      onDragEnd={this.handleDragEnd}
-      >
+      <React.Fragment>
+        {showModal &&
+            <ModalDialog onClose={() => this.handleCloseEditItem()}>
+              <EditTodoItem 
+                formTitle='Edit Item' 
+                todoItem={todoItem}
+                onSubmitItem = {(item) => this.handleSubmitEditItem(item, onEditItem)}
+              ></EditTodoItem>
+            </ModalDialog>}
+        <li 
+          draggable className={todoItemClasses.join(' ')}
+          onDragStart={(e) => this.handleDragStart(e, todoItem)}
+          onDragOver={this.handleDragOver}
+          onDragEnter={this.handleDragEnter}
+          onDragLeave={this.handleDragLeave}
+          onDrop={(e) => this.handleDrop(e, todoItem, onDropItem)}
+          onDragEnd={this.handleDragEnd}
+          >
 
-        <span onClick={() => onRemoveItem(todoItem.id)} className="TodoClose">x</span>
-        <h4><b>{todoItem.title}</b></h4>
-        <p>{todoItem.description}</p> 
-      </li>
+            <span onClick={() => onRemoveItem(todoItem.id)} className="TodoClose">x</span>
+            <span onClick={() => this.handleEditItem()}>...</span>
+            <h4><b>{todoItem.title}</b></h4>
+            <p>{todoItem.description}</p> 
+        </li>
+      </React.Fragment>
+      
     );
   }
 }

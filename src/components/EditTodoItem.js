@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import uuid from "uuid";
-import "./NewTodoItem.css";
+import "./EditTodoItem.css";
 
-export default class NewTodoItem extends Component {
+export default class EditTodoItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      description: '',
-      formValid: false
-    };
+    if (props.todoItem) {
+      this.state = {
+        ...props.todoItem,
+        formValid: true
+      };
+    } else {
+      this.state = {
+        title: '',
+        description: '',
+      };
+    }
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDescriptionTextChange = this.handleDescriptionTextChange.bind(this);
     this.handleTitleTextChange = this.handleTitleTextChange.bind(this);
@@ -39,10 +46,11 @@ export default class NewTodoItem extends Component {
   render() {
     const description = this.state.description;
     const title = this.state.title;
+    const formTitle = this.props.formTitle;
     return (  
       <form onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend>Add New Item</legend>
+          <legend>{formTitle}</legend>
           <p>
             <label className="field" htmlFor="Title"><span>*</span>Title:</label>
             <input
@@ -59,18 +67,19 @@ export default class NewTodoItem extends Component {
               onChange={this.handleDescriptionTextChange}
             />
           </p>
-          <button disabled={!this.state.formValid} type="submit">Add</button>
+          <button disabled={!this.state.formValid} type="submit">Save</button>
         </fieldset>
       </form>
     );
   }
 
   handleSubmit(e) {
+    debugger;
     const item = {
       id: uuid.v4(),
       ...this.state
     };
-    this.props.onAddItem(item);
+    this.props.onSubmitItem(item);
     this._resetFields();
     this._isFormValid(false);
     e.preventDefault();
@@ -81,6 +90,7 @@ export default class NewTodoItem extends Component {
       formValid
     });
   }
+
   _validateData() {
     if (!this.state.title || !this.state.description) { 
       this._isFormValid(false);

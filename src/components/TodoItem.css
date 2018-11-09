@@ -26,11 +26,11 @@
   opacity: 0.4;
 }
 
-.TodoClose {
+.TodoItem span {
   float: right;
   margin-right: 5px;
 }
 
-.TodoClose:hover {
+span:hover {
   cursor: pointer;
 }

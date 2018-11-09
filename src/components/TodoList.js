@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NewTodoItem from "./NewTodoItem";
+import EditTodoItem from "./EditTodoItem";
 import TodoItem from "./TodoItem";
 import './TodoList.css';
 
@@ -12,6 +12,7 @@ export default class TodoList extends Component {
     this.addItemHandle = this.addItemHandle.bind(this);
     this.removeItemHandle = this.removeItemHandle.bind(this);
     this.dropItemHandle = this.dropItemHandle.bind(this);
+    this.editItemHandle = this.editItemHandle.bind(this);
   }
 
   addItemHandle(item) {
@@ -20,6 +21,14 @@ export default class TodoList extends Component {
     });
   }
     
+  editItemHandle(todoItem) {
+    const todoItemPosition = this.state.items.findIndex((item) => item.id === todoItem.id);
+    this.state.items.splice(todoItemPosition, 1, todoItem);
+    this.setState({
+      items: [].concat(this.state.items)
+    });
+  }
+
   removeItemHandle(id) {
     this.setState({
       items: this.state.items.filter((item) => item.id !== id)
@@ -37,7 +46,14 @@ export default class TodoList extends Component {
 
   render() {
     const todoItems = this.state.items.map((todoItem) => 
-      <TodoItem onDropItem={this.dropItemHandle} onRemoveItem={this.removeItemHandle} key={todoItem.id} todoItem={todoItem}></TodoItem>
+      <TodoItem 
+        onDropItem={this.dropItemHandle} 
+        onRemoveItem={this.removeItemHandle} 
+        key={todoItem.id} 
+        todoItem={todoItem}
+        onEditItem={this.editItemHandle}
+        >
+      </TodoItem>
     );
     return (
       <div>
@@ -45,7 +61,7 @@ export default class TodoList extends Component {
           <h2>ToDo List App</h2>
         </div>
         <div className="TodoList-body">
-          <NewTodoItem onAddItem={this.addItemHandle}></NewTodoItem>
+          <EditTodoItem formTitle='New Item' onSubmitItem={this.addItemHandle}></EditTodoItem>
           <div>
             <h3>Items</h3>
             <ul className="TodoList-container">
